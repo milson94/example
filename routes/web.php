@@ -13,21 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('form');
-});
+Route::get('form-inserir', [App\Http\Controllers\TarefasController::class, 'mostrarViewDeInsercao'])->name('viewInsercao');
 
-Route::get('tarefas', function() {
-    return view('listar');
-});
+Route::get('form-update/{tarefa}', [App\Http\Controllers\TarefasController::class, 'mostrarViewDeAtualizacao'])->name('viewAtualizacao');
+Route::post('atualizar', [App\Http\Controllers\TarefasController::class, 'atualizarTarefa'])->name('atualizar');
 
-Route::post('inserirTarefa', [App\Http\Controllers\TarefasController::class, 'inserirTarefa'])->name('tarefa');
+Route::post('/inserirTarefa', [App\Http\Controllers\TarefasController::class, 'inserirTarefa'])->name('inserir');
 
-Route::get('show', [App\Http\Controllers\TarefasController::class, 'showData'])->name('tarefa');
+Route::get('/', [App\Http\Controllers\TarefasController::class, 'showData'])->name('show');
 
-Route::get('update/{nome}', [App\Http\Controllers\TarefasController::class, 'update'])->name('tarefa');
+Route::get('update/{nome}', [App\Http\Controllers\TarefasController::class, 'update'])->name('update');
 
-Route::get('remover/{value}', [App\Http\Controllers\TarefasController::class, 'remover'])->name('tarefa');
+Route::get('remover/{value}', [App\Http\Controllers\TarefasController::class, 'remover'])->name('remover');
 
 
 

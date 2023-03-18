@@ -11,6 +11,8 @@
         <th>Titulo</th>
         <th>autores</th>
         <th>descricoes</th>
+          <th>opcoes</th>
+
       </tr>
 
       @foreach ($tarefas as $tarefa)
@@ -18,9 +20,21 @@
         <td>{{$tarefa->nome}}</td>
         <td>{{$tarefa->autores}}</td>
         <td>{{$tarefa->descricao}}</td>
+        <td>
+           <a href="{{route('viewAtualizacao', $tarefa->id)}}"><button type="button" id="adicionar">Update</button></a>
+        </td>
+        <td>
+          <a href="{{route('remover', $tarefa->id)}}"> <button type="button" id="remover">Delete</button> </a>
+        </td>
       </tr>
       @endforEach
-
     </table>
+
+<br>
+<br>
+  <a href="{{route('viewInsercao')}}">  <button type="button" id="adicionar">Adicionar nova tarefa</button> </a>
+
+
+
   </body>
 </html>

@@ -8,7 +8,7 @@
     <form class="" action="/inserirTarefa" method="post">
       @csrf
       <label for="titulo">Titulo:</label>
-      <input type="text" id="titulo" name="titulo" value="">
+      <input type="text" id="titulo"  name="titulo" value="">
 
       <label for="descricao">Descrição: </label>
       <input type="textarea" name="descricao"  id=descricao  value="">

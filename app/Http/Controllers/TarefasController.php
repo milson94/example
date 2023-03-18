@@ -16,9 +16,22 @@ class TarefasController extends Controller
       $tarefa->autores = $request->autor;
       $tarefa->save();
 
-      echo 'dado adicionado'.' '.$tarefa->nome.'-...- '.$tarefa->descricao.'-...-'.$tarefa->autores.'.';
-      die();
+      return redirect()->route('show');
     }
+
+    function atualizarTarefa(Request $request) {
+      $tarefa =  Tarefas::find($request->id);
+
+      $tarefa->nome = $request->titulo;
+      $tarefa->descricao = $request->descricao;
+      $tarefa->autores = $request->autor;
+      $tarefa->update();
+
+      // $tarefa->delete();
+
+      return redirect()->route('show');
+    }
+
 
     function showData(){
       $tarefas = DB::table('tarefas')->get();
@@ -31,7 +44,17 @@ class TarefasController extends Controller
       $tarefa->descricao = 'um conto intrigante ente dois irmaos e uma familia esquisita';
       $tarefa->update();
 
+
       return $tarefa;
+    }
+
+    function mostrarViewDeInsercao(){
+      return view('form-inserir');
+    }
+
+    function mostrarViewDeAtualizacao($id){
+      $tarefa= Tarefas::find($id);
+      return view('form-update', array('tarefa' => $tarefa));
     }
 
     function busca (){
@@ -45,7 +68,7 @@ class TarefasController extends Controller
     function remover($id){
       $tarefa  = Tarefas::find($id);
       $tarefa->delete();
-      return $tarefa;
+      return redirect()->route('show');
 
     }
 }
