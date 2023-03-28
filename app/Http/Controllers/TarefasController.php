@@ -41,7 +41,7 @@ class TarefasController extends Controller
     function update($nome){
       $tarefa =  Tarefas::find(5);
       $tarefa->nome = $nome;
-      $tarefa->descricao = 'um conto intrigante ente dois irmaos e uma familia esquisita';
+      $tarefa->descricao = 'um conto interessante entre bros!';
       $tarefa->update();
 
 
